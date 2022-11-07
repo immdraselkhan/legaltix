@@ -2,7 +2,7 @@
 
 This is simple individual legal service review website. I used ReactJS for frontend and NodeJS for backend development. Initially I loaded some services from database. But logged in user can add more services. Regular visitors can see the services but to submit review need to log in. I also used the following things in this project.
 
-## Live Website - [https://legaltix.web.app](https://legaltix.web.app)
+## Live Website - [legaltix.web.app](https://legaltix.web.app)
 
 ### `React Vite`
 [Documentation Link](https://vitejs.dev/guide)

@@ -3,7 +3,6 @@ import { FaGoogle, FaGithub, FaTwitter } from 'react-icons/fa'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/UserContext'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
 
 const Login = () => {
 

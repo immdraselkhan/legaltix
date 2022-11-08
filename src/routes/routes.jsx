@@ -7,6 +7,7 @@ import Register from '../components/Register'
 import Blog from '../components/Blog'
 import PrivateRoute from './PrivateRoute'
 import Error from '../components/Error'
+import AddService from '../components/AddService'
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: '/blog',
         element: <PrivateRoute><Blog /></PrivateRoute>
+      },
+      {
+        path: '/add-service',
+        element: <PrivateRoute><AddService /></PrivateRoute>
       },
     ],
   },

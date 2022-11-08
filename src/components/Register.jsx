@@ -3,7 +3,6 @@ import { FaGoogle, FaGithub, FaTwitter } from 'react-icons/fa'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/UserContext'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
 
 const Register = () => {
 
@@ -35,7 +34,7 @@ const Register = () => {
     .then(userCredential => {
       // Signed in 
       const user = userCredential.user;
-      // Set use details
+      // Update user details
       updateUserProfile({displayName: name, photoURL: userPhoto})
       .then(() => {
         // Profile updated!

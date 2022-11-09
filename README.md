@@ -32,3 +32,6 @@ I used the following things in this project.
 ### `React Rating`
 [Github Link](https://github.com/dreyescat/react-rating)
 
+### `react-photo-view`
+[Github Link](https://github.com/MinJieLiu/react-photo-view)
+

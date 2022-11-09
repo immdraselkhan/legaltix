@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 
 const AddService = () => {
 
-  // Getting data from AuthContext [skipped for this assignment, after result just add "verifyEmail"]
+  // Getting data from AuthContext
   const {user, updateUserProfile} = useContext(AuthContext);
 
   // Uploaded service thumbnail state
@@ -28,10 +28,12 @@ const AddService = () => {
     };
   };
 
+  // Handle add service
   const handleAddService = e => {
     // Disabling form default behavior
     e.preventDefault();
-    // Create object using form data to req server
+    // Create object using form data to post server
+    // const time = Date.now()
     const service = {
       title: e.target.title.value,
       slug: e.target.title.value.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,''),
@@ -55,19 +57,25 @@ const AddService = () => {
       if(data.success){
         // Update user details
         updateUserProfile({photoURL: data.updatedPhoto})
+        // Form reset
+        e.target.reset();
         // Successful toast
         toast.success(data.message, {
           autoClose: 1500, position: toast.POSITION.TOP_CENTER
         });
       } else {
+        // Error toast
         toast.error(data.error, {
           autoClose: 1500, position: toast.POSITION.TOP_CENTER
         });
-      }
+      };
     })
-    .catch(err => {
-      toast.error(err.message);
-    })
+    .catch(error => {
+      // Error toast
+      toast.error(error.message, {
+        autoClose: 1500, position: toast.POSITION.TOP_CENTER
+      });
+    });
   };
 
   return (

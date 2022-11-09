@@ -9,6 +9,7 @@ import Service from '../components/Service'
 import Blog from '../components/Blog'
 import PrivateRoute from './PrivateRoute'
 import AddService from '../components/AddService'
+import MyReviews from '../components/MyReviews'
 import Error from '../components/Error'
 
 export const router = createBrowserRouter([
@@ -39,11 +40,15 @@ export const router = createBrowserRouter([
       },
       {
         path: '/blog',
-        element: <PrivateRoute><Blog /></PrivateRoute>
+        element: <Blog />
       },
       {
         path: '/add-service',
         element: <PrivateRoute><AddService /></PrivateRoute>
+      },
+      {
+        path: '/my-reviews',
+        element: <PrivateRoute><MyReviews /></PrivateRoute>
       },
     ],
   },

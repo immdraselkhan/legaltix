@@ -1,16 +1,20 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { AuthContext } from '../contexts/UserContext'
-import { PhotoProvider, PhotoView } from 'react-photo-view'
 import Rating from 'react-rating'
-import { FaStar } from 'react-icons/fa'
+import { PhotoProvider, PhotoView } from 'react-photo-view'
 import 'react-photo-view/dist/react-photo-view.css'
+import { FaStar } from 'react-icons/fa'
 import { toast } from 'react-toastify'
+import useTitle from '../hooks/useTitle'
 
 const Service = () => {
 
   // Getting data from AuthContext
   const {user} = useContext(AuthContext);
+
+  // Get current location
+  const location = useLocation();
 
   // Getting the params
   const {slug} = useParams();
@@ -27,6 +31,9 @@ const Service = () => {
   // All service state
   const [reviews, setReviews] = useState([]);
 
+  // Set page title
+  useTitle(`${service?.title || 'Service'}`);
+
   // Fetch method: GET
   useEffect(() => {
     fetch(`http://localhost:8000/service/${slug}`)
@@ -36,7 +43,7 @@ const Service = () => {
           // Set data to the state
           setService(data.data.service);
           // Set reviews to the state
-          setReviews(data.data.reviews)
+          setReviews(data.data.reviews);
         } else {
           // Error toast
           toast.error(data.error, {
@@ -64,6 +71,7 @@ const Service = () => {
       comment: e.target.comment.value,
       userPhoto: user?.photoURL || '',
       serviceId: service?._id,
+      date: new Date().toLocaleString(),
     };
     // Fetch method: POST
     fetch(`http://localhost:8000/add-review/${slug}`, {
@@ -134,7 +142,7 @@ const Service = () => {
               <br />
               <input type="submit" value="Submit" />
             </form>) : 'Already reviewed'
-        ) : <h4>Please login to review <Link to="/login">Login</Link></h4>
+        ) : <h4>Please login to review <Link to="/login" state={{from: location}} replace >Login</Link></h4>
         }
 
         <h2>All Reviews</h2>

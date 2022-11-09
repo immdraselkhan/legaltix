@@ -1,11 +1,19 @@
 import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/UserContext'
 import { toast } from 'react-toastify'
+import useTitle from '../hooks/useTitle'
 
 const AddService = () => {
 
+  // Set page title
+  useTitle('Add Service');
+
   // Getting data from AuthContext
   const {user, updateUserProfile} = useContext(AuthContext);
+
+  // useNavigate hook
+  const navigate = useNavigate();
 
   // Uploaded service thumbnail state
   const [thumbnail, setThumbnail] = useState('');
@@ -36,13 +44,14 @@ const AddService = () => {
     // const time = Date.now()
     const service = {
       title: e.target.title.value,
-      slug: e.target.title.value.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,''),
+      slug: e.target.title.value.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'') + '-' + Math.floor(Math.random() * 100000),
       thumbnail: thumbnail,
       description: e.target.description.value,
       price: e.target.price.value,
       userName: user?.displayName,
       userId: user?.uid,
       userPhoto: user?.photoURL || userPhoto,
+      date: new Date().toLocaleString(),
     };
     // Fetch method: POST
     fetch('http://localhost:8000/add-service', {
@@ -63,6 +72,8 @@ const AddService = () => {
         toast.success(data.message, {
           autoClose: 1500, position: toast.POSITION.TOP_CENTER
         });
+        // Redirect to home
+        navigate('/');
       } else {
         // Error toast
         toast.error(data.error, {

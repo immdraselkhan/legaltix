@@ -3,8 +3,12 @@ import { FaGoogle, FaGithub, FaTwitter } from 'react-icons/fa'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/UserContext'
 import { toast } from 'react-toastify'
+import useTitle from '../hooks/useTitle'
 
 const Register = () => {
+
+  // Set page title
+  useTitle('Register');
 
   // Getting data from AuthContext [skipped for this assignment, after result just add "verifyEmail"]
   const {user, googleProvider, twitterProvider, githubProvider, signupWithEmailPassword, logInWithPopup, updateUserProfile} = useContext(AuthContext);

@@ -3,8 +3,12 @@ import { FaGoogle, FaGithub, FaTwitter } from 'react-icons/fa'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/UserContext'
 import { toast } from 'react-toastify'
+import useTitle from '../hooks/useTitle'
 
 const Login = () => {
+
+  // Set page title
+  useTitle('Login');
 
   // Getting data from AuthContext
   const {googleProvider, twitterProvider, githubProvider, logInWithEmailPassword, logInWithPopup, passwordResetEmail, setLoading} = useContext(AuthContext);

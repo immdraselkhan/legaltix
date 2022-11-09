@@ -1,6 +1,11 @@
 import React from 'react'
+import useTitle from '../hooks/useTitle'
 
 const Blog = () => {
+
+  // Set page title
+  useTitle('Blog');
+
   return (
     <article className="py-20 bg-slate-50 dark:bg-[#0B1120]">
       <div className="max-w-3xl px-3 mx-auto">

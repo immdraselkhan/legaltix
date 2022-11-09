@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { AuthContext } from '../contexts/UserContext'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Rating from 'react-rating'
 import { FaStar } from 'react-icons/fa'
@@ -38,26 +37,34 @@ const Home = () => {
 
   return (
     <section>
-      <div className="grid grid-cols-3">
-        {services?.map(service => {
-          return(
-          <div onClick={() => navigate(`/service/${service?.slug}`)} key={service?._id} className="cursor-pointer">
-            <img src={service?.thumbnail?.url} alt="" />
-            <h3>{service?.title}</h3>
-            <p>{service?.description}</p>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <img src={service?.userPhoto?.url} alt="" />
-                <p>{service?.userName}</p>
-                <Rating readonly placeholderRating={`${service?.rating}`} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />}/>
+      <div>
+        <div className="grid grid-cols-3">
+          {services?.map(service => {
+            return(
+            <div onClick={() => navigate(`/service/${service?.slug}`)} key={service?._id} className="cursor-pointer">
+              <img src={service?.thumbnail?.url} alt="" />
+              <h3>{service?.title}</h3>
+              <p>{service?.description}</p>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <img src={service?.userPhoto?.url} alt="" />
+                  <p>{service?.userName}</p>
+                  <div className="flex items-center gap-1">
+                    <Rating className="mt-1" readonly placeholderRating={`${service?.rating}`} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />} />
+                    <span>({service?.reviewCount})</span>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <p>{service?.price}</p>
+                  <Link to={`/service/${service?.slug}`}>Details</Link>
+                </div>
               </div>
-              <div className="flex items-center">
-                <p>{service?.price}</p>
-                <Link to={`/service/${service?.slug}`}>Details</Link>
-              </div>
-            </div>
-          </div>)
-        })}
+            </div>)
+          })}
+        </div>
+        <div>
+          <Link to="/services">All Services</Link>
+        </div>
       </div>
     </section>
   )

@@ -113,7 +113,10 @@ const Service = () => {
           <img src={service?.userPhoto?.url} alt="" />
           <p>{service?.userName}</p>
           <p>{service?.price}</p>
-          <Rating readonly placeholderRating={`${service?.rating}`} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />}/>
+          <div className="flex items-center gap-1">
+            <Rating className="mt-1" readonly placeholderRating={`${service?.rating}`} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />} />
+            <span>({service?.reviewCount})</span>
+          </div>
         </div>
       </section>
 
@@ -135,7 +138,7 @@ const Service = () => {
         }
 
         <h2>All Reviews</h2>
-        {reviews ? (
+        {reviews.length ? (
           reviews?.map(review => {
           return (
             <div key={review?._id}>

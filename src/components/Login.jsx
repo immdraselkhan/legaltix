@@ -25,6 +25,35 @@ const Login = () => {
   // User email state
   const [userEmail, setUserEmail] = useState('');
 
+  // Set JWT
+  const setJWT = userId => {
+    fetch('http://localhost:8000/jwt', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({userId})
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        // Store the token
+        localStorage.setItem('token', data.token);
+      } else {
+        // Error toast
+        toast.error(data.error, {
+          autoClose: 1500, position: toast.POSITION.TOP_CENTER
+        });
+      };
+    })
+    .catch(error => {
+      // Error toast
+      toast.error(error.message, {
+        autoClose: 1500, position: toast.POSITION.TOP_CENTER
+      });
+    });
+  };
+
   // Handle form submit
   const handleSubmit = e => {
     // Disabling form default behavior
@@ -44,8 +73,12 @@ const Login = () => {
       });
       // Form reset
       e.target.reset();
+      // Call JWT function
+      setJWT(user?.uid);
       // Reditect to the targeted page
-      navigate(from, {replace: true});
+      setTimeout(() => {
+        navigate(from, {replace: true});
+      }, 1000);
       // Loader state false
       setLoading(false);
     }).catch((error) => {
@@ -69,8 +102,12 @@ const Login = () => {
       toast.success('Logged in successfully!', {
         autoClose: 1500, position: toast.POSITION.TOP_CENTER
       });
+      // Call JWT function
+      setJWT(user?.uid);
       // Reditect to the targeted page
-      navigate(from, {replace: true});
+      setTimeout(() => {
+        navigate(from, {replace: true});
+      }, 1000);
       // Loader state false
       setLoading(false);
     }).catch((error) => {

@@ -63,7 +63,7 @@ const AddService = () => {
     })
     .then(res => res.json())
     .then(data => {
-      if(data.success){
+      if (data.success) {
         // Update user details
         updateUserProfile({photoURL: data.updatedPhoto})
         // Form reset

@@ -21,6 +21,35 @@ const Register = () => {
     return <Navigate to="/" replace={true} />
   };
 
+  // Set JWT
+  const setJWT = userId => {
+    fetch('http://localhost:8000/jwt', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({userId})
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        // Store the token
+        localStorage.setItem('token', data.token);
+      } else {
+        // Error toast
+        toast.error(data.error, {
+          autoClose: 1500, position: toast.POSITION.TOP_CENTER
+        });
+      };
+    })
+    .catch(error => {
+      // Error toast
+      toast.error(error.message, {
+        autoClose: 1500, position: toast.POSITION.TOP_CENTER
+      });
+    });
+  };
+
   // Handle form submit
   const handleSubmit = e => {
     // Disabling form default behavior
@@ -62,8 +91,12 @@ const Register = () => {
       // });
       // Form reset
       e.target.reset();
-      // Redirect to home
-      navigate('/');
+      // Call JWT function
+      setJWT(user?.uid);
+      // Reditect to the targeted page
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
     }).catch((error) => {
       // Error toast
       toast.error(`${error.code}`, {
@@ -83,8 +116,12 @@ const Register = () => {
       toast.success('Account created successfully!', {
         autoClose: 1500, position: toast.POSITION.TOP_CENTER
       });
-      // Redirect to home page
-      navigate('/');
+      // Call JWT function
+      setJWT(user?.uid);
+      // Reditect to the targeted page
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
     }).catch((error) => {
       // Error toast
       toast.error(`${error.code}`, {

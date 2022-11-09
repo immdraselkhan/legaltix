@@ -9,32 +9,38 @@ const MyReviews = () => {
   useTitle('My Reviews');
 
   // Getting data from AuthContext
-  const {user} = useContext(AuthContext);
+  const {user, userLogOut} = useContext(AuthContext);
 
   // Reviews state
   const [reviews, setReviews] = useState([]);
 
   // Fetch method: GET
   useEffect(() => {
-    fetch(`http://localhost:8000/my-reviews/${user?.uid}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          // Set reviews to the state
-          setReviews(data.data);
-        } else {
-          // Error toast
-          toast.error(data.error, {
-            autoClose: 1500, position: toast.POSITION.TOP_CENTER
-          });
-        };
-      })
-      .catch(error => {
+    fetch(`http://localhost:8000/my-reviews/${user?.uid}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        // Set reviews to the state
+        setReviews(data.data);
+      } else {
         // Error toast
-        toast.error(error.message, {
+        toast.error(data.error, {
           autoClose: 1500, position: toast.POSITION.TOP_CENTER
         });
+        // Sign out the user
+        userLogOut();
+      };
+    })
+    .catch(error => {
+      // Error toast
+      toast.error(error.message, {
+        autoClose: 1500, position: toast.POSITION.TOP_CENTER
       });
+    });
   }, []);
 
   return (

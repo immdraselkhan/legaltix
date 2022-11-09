@@ -83,7 +83,7 @@ const Service = () => {
     })
     .then(res => res.json())
     .then(data => {
-      if(data.success){
+      if (data.success) {
         // Refresh the useEffect
         setRefresh(!refresh);
         // Form reset

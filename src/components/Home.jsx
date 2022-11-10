@@ -11,7 +11,7 @@ const Home = () => {
 
   // Fetch method: GET
   useEffect(() => {
-    fetch('http://localhost:8000/services?total=3')
+    fetch('https://legaltix-api.vercel.app/services?total=3')
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

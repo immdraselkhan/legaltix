@@ -27,7 +27,7 @@ const Login = () => {
 
   // Set JWT
   const setJWT = userId => {
-    fetch('http://localhost:8000/jwt', {
+    fetch('https://legaltix-api.vercel.app/jwt', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

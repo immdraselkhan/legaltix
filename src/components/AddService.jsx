@@ -54,7 +54,7 @@ const AddService = () => {
       date: new Date().toLocaleString(),
     };
     // Fetch method: POST
-    fetch('http://localhost:8000/add-service', {
+    fetch('https://legaltix-api.vercel.app/add-service', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

@@ -36,7 +36,7 @@ const Service = () => {
 
   // Fetch method: GET
   useEffect(() => {
-    fetch(`http://localhost:8000/service/${slug}`)
+    fetch(`https://legaltix-api.vercel.app/service/${slug}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -71,10 +71,11 @@ const Service = () => {
       comment: e.target.comment.value,
       userPhoto: user?.photoURL || '',
       serviceId: service?._id,
+      serviceTitle: service?.title,
       date: new Date().toLocaleString(),
     };
     // Fetch method: POST
-    fetch(`http://localhost:8000/add-review/${slug}`, {
+    fetch(`https://legaltix-api.vercel.app/add-review/${slug}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

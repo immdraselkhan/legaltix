@@ -13,7 +13,7 @@ const Services = () => {
 
   // Fetch method: GET
   useEffect(() => {
-    fetch('http://localhost:8000/services')
+    fetch('https://legaltix-api.vercel.app/services')
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

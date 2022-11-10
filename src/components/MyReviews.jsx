@@ -123,7 +123,7 @@ const MyReviews = () => {
 
   // Fetch method: GET
   useEffect(() => {
-    fetch(`http://localhost:8000/my-reviews/${user?.uid}`, {
+    fetch(`https://legaltix-api.vercel.app/my-reviews/${user?.uid}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -190,8 +190,11 @@ const MyReviews = () => {
                     </div>
                   </div>
                   <div className="p-4 space-y-2 text-sm dark:text-gray-400">
+                    <div>
+                      <h3 className="text-xl font-bold">{review?.serviceTitle}</h3>
+                    </div>
                     <p className="text-lg">{review?.comment}</p>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between pt-5">
                       <button className={btn} data-id={review?.serviceId} data-star={review?.star} data-comment={review?.comment} onClick={(e) => {handleModal('edit'), setServiceId(e.target.getAttribute('data-id')), setOldStar(e.target.getAttribute('data-star')), setOldComment(e.target.getAttribute('data-comment'))}}>Edit</button>
                       <button className={btnWarning} data-id={review?.serviceId} data-star={review?.star} onClick={(e) => {handleModal('trash'), setServiceId(e.target.getAttribute('data-id'), setOldStar(e.target.getAttribute('data-star')))}}>Delete</button>
                     </div>

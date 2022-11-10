@@ -89,51 +89,51 @@ const Home = () => {
         <div className="container px-6 py-12 mx-auto">
           <div className="grid items-center gap-4 xl:grid-cols-5">
             <div className="max-w-2xl mx-auto my-8 space-y-4 text-center xl:col-span-2 xl:text-left">
-              <h2 className="text-4xl font-bold">Duo assum utroque appetere an</h2>
-              <p className="text-gray-600">Pri ex magna scaevola moderatius. Nullam accommodare no vix, est ei diceret alienum, et sit cetero malorum. Et sea iudico consequat, est sanctus adipisci ex.</p>
+              <h2 className="text-4xl font-bold" style={{lineHeight: "1.3em"}}>What our customers are saying about our legal services</h2>
+              <p className="text-gray-600">We've been trusted by 1000 business owners worldwide since 2022. See what your fellow entrepreneurs are saying about Legaltix.</p>
             </div>
             <div className="p-6 xl:col-span-3">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="grid content-center gap-4">
                   <div className="p-6 rounded-lg shadow-md text-gray-900 dark:bg-gray-900 dark:text-white">
-                    <p>An audire commodo habemus cum. Ne sed corrumpit repudiandae. Tota aliquip democritum pro in, nec democritum intellegam ne. Propriae volutpat dissentiet ea sit, nec at lorem inani tritani, an ius populo perfecto vituperatoribus. Eu cum case modus salutandi, ut eum vocent sensibus reprehendunt.</p>
+                    <p>"You guys are doing great and making the process simple. Opti-tru is moving to Wix, and if you can offer me a deal, ill leave the best reviews and sponsor my company by Legaltix... I mean, we have the same colors. Thank you."</p>
                     <div className="flex items-center mt-4 space-x-4">
                       <img src="https://source.unsplash.com/50x50/?portrait?1" alt="" className="w-12 h-12 bg-center bg-cover rounded-full bg-gray-500" />
                       <div>
-                        <p className="text-lg font-semibold">Leroy Jenkins</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-200">CTO of Company Co.</p>
+                        <p className="text-lg font-semibold">Dylan Willox</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-200">NC, United States</p>
                       </div>
                     </div>
                   </div>
                   <div className="p-6 rounded-lg shadow-md text-gray-900 dark:bg-gray-900 dark:text-white">
-                    <p>Sit wisi sapientem ut, pri civibus temporibus voluptatibus et, ius cu hinc fabulas. Nam meliore minimum et, regione convenire cum id. Ex pro eros mucius consectetuer, pro magna nulla nonumy ne, eam putent iudicabit consulatu cu.</p>
+                    <p>"I did research before I got started and was still nervous about the process. Once I started everything was simple and now I just wait for the State to finish filing. I'm happy I took the first step and it wasn't a difficult one."</p>
                     <div className="flex items-center mt-4 space-x-4">
                       <img src="https://source.unsplash.com/50x50/?portrait?2" alt="" className="w-12 h-12 bg-center bg-cover rounded-full bg-gray-500" />
                       <div>
-                        <p className="text-lg font-semibold">Leroy Jenkins</p>
-                        <p className="text-sm text-gray-600">CTO of Company Co.</p>
+                        <p className="text-lg font-semibold">Ugonna A.</p>
+                        <p className="text-sm text-gray-600">MN, United States</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="grid content-center gap-4">
                   <div className="p-6 rounded-lg shadow-md text-gray-900 dark:bg-gray-900 dark:text-white">
-                    <p>Putant omnium elaboraret per ut. Id dicta tritani nominavi quo, mea id justo errem elaboraret. Agam mollis scripserit ea his, ut nec postea verear persecuti. Ea noster senserit eam, ferri omittantur ei nec. Id mel solet libris efficiantur, commune explicari et eos. Case movet ad est, sed tota vocent appetere ea.</p>
+                    <p>"This did not take too long. The only thing that took a few minutes was trying to figure out what to fill in in the "Industry" keyword area. Nothing really fits. Then because of what I chose, later in the process, I was alerted to needing 2 licenses (for another $99.00) which I don't think I need (so I did not purchase them). Overall, I was pleased with the ease of the process and the price is competitive."</p>
                     <div className="flex items-center mt-4 space-x-4">
                       <img src="https://source.unsplash.com/50x50/?portrait?3" alt="" className="w-12 h-12 bg-center bg-cover rounded-full bg-gray-500" />
                       <div>
-                        <p className="text-lg font-semibold">Leroy Jenkins</p>
-                        <p className="text-sm text-gray-600">CTO of Company Co.</p>
+                        <p className="text-lg font-semibold">Gretchen Tyler</p>
+                        <p className="text-sm text-gray-600">NV, United States</p>
                       </div>
                     </div>
                   </div>
                   <div className="p-6 rounded-lg shadow-md text-gray-900 dark:bg-gray-900 dark:text-white">
-                    <p>Te omnes virtute volutpat sed. Ei esse eros interesset vel, ei populo denique ocurreret vix, eu cum pertinax mandamus vituperatoribus. Solum nihil luptatum per ex, ei amet viderer eos. Ea illum labitur mnesarchum pro. Eius meis salutandi ei nam, alterum expetenda et nec. Expetenda intellegat at eum, per mazim sanctus honestatis ad. Ei noluisse invenire vix. Te ancillae patrioque qui, probo bonorum vivendum ex vim.</p>
+                    <p>"I have filed for LLCs in the past and been surprised at uncontrollable fees. I was tired of being charged fees that I felt I never agreed to. Legaltix made the process easy and affordable. They allowed me to choose what parts of opening an LLC I wanted to do on my own and which ones that I didn't feel comfortable with, allowing them to handle it for me. It's quick, affordable and easy working with Legaltix. I will be back and would recommend them to everyone."</p>
                     <div className="flex items-center mt-4 space-x-4">
                       <img src="https://source.unsplash.com/50x50/?portrait?4" alt="" className="w-12 h-12 bg-center bg-cover rounded-full bg-gray-500" />
                       <div>
-                        <p className="text-lg font-semibold">Leroy Jenkins</p>
-                        <p className="text-sm text-gray-600">CTO of Company Co.</p>
+                        <p className="text-lg font-semibold">Chris Wilson</p>
+                        <p className="text-sm text-gray-600">PA, United States</p>
                       </div>
                     </div>
                   </div>

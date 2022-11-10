@@ -122,7 +122,7 @@ const Service = () => {
           <p>{service?.userName}</p>
           <p>{service?.price}</p>
           <div className="flex items-center gap-1">
-            <Rating className="mt-1" readonly placeholderRating={`${service?.rating}`} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />} />
+            <Rating className="mt-1" readonly placeholderRating={service?.rating} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />} />
             <span>({service?.reviewCount})</span>
           </div>
         </div>
@@ -138,7 +138,7 @@ const Service = () => {
               <br />
               <textarea name="comment" cols="30" rows="10" placeholder="Enter review details" required />
               <br />
-              <Rating onClick={(value) => setStar(value)} emptySymbol={<FaStar className="text-black dark:text-white" />} fullSymbol={<FaStar className="text-primary" />} />
+              <Rating onClick={(value) => setStar(value)} initialRating={star} emptySymbol={<FaStar className="text-black dark:text-white" />} fullSymbol={<FaStar className="text-primary" />} />
               <br />
               <input type="submit" value="Submit" />
             </form>) : 'Already reviewed'
@@ -152,7 +152,7 @@ const Service = () => {
             <div key={review?._id}>
               <h5>{review?.name}</h5>
               <p>{review?.comment}</p>
-              <Rating readonly placeholderRating={`${review?.star}`} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />}/>
+              <Rating readonly placeholderRating={review?.star} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />}/>
               <img src={review?.userPhoto} alt="" />
             </div>
           )})

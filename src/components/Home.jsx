@@ -57,7 +57,7 @@ const Home = () => {
                     <img src={service?.userPhoto?.url} alt="" />
                     <p>{service?.userName}</p>
                     <div className="flex items-center gap-1">
-                      <Rating className="mt-1" readonly placeholderRating={`${service?.rating}`} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />} />
+                      <Rating className="mt-1" readonly placeholderRating={service?.rating} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />} />
                       <span>({service?.reviewCount})</span>
                     </div>
                   </div>

@@ -12,7 +12,7 @@ const ServiceCard = ({service}) => {
       <Card>
         <PhotoProvider>
           <PhotoView src={service?.thumbnail?.url}>
-            <img src={service?.thumbnail?.url} alt={service?.title} className="h-[220px] w-[500px] rounded-lg" />
+            <img src={service?.thumbnail?.url} alt={service?.title} className="h-[220px] w-[500px] rounded-lg cursor-pointer" />
           </PhotoView>
         </PhotoProvider>
         <div className="flex items-center space-x-4">
@@ -28,7 +28,7 @@ const ServiceCard = ({service}) => {
               {service?.userName}
             </p>
             <p className="truncate text-sm text-gray-500 dark:text-gray-400">
-              {service?.userId}
+              User ID: {service?.userId.substring(0, 10)}
             </p>
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
@@ -54,7 +54,7 @@ const ServiceCard = ({service}) => {
              to={`/service/${service?.slug}`}
             className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            View details
+            Review
           </Link>
         </div>
       </Card>

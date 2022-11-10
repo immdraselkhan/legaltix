@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Rating from 'react-rating'
-import { Card } from 'flowbite-react'
-import { PhotoProvider, PhotoView } from 'react-photo-view'
 import 'react-photo-view/dist/react-photo-view.css'
-import { FaStar } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import ServiceCard from './ServiceCard'
 
 const Home = () => {
-
-  // useNavigate hook
-  const navigate = useNavigate()
 
   // All services state
   const [services, setServices] = useState([]);
@@ -41,11 +34,11 @@ const Home = () => {
 
   return (
     <>
-      <section className="bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100">
+      <section className="bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100 h-screen flex items-center">
         <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
           <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-            <h1 className="text-5xl font-bold sm:text-6xl" style={{lineHeight: "1.2em"}}>Affordable<br />
-              <span className="text-blue-600">Legal Access</span><br />For All
+            <h1 className="text-5xl font-black sm:text-6xl" style={{lineHeight: "1.2em"}}>Let's Review<br />
+              <span className="text-blue-600">Legal Services</span>
             </h1>
             <p className="mt-6 mb-8 text-lg sm:mb-12">Our network of experienced lawyers can provide advice on legal issues for you, your family, or your business, all directly through our app.
               <br className="hidden md:inline lg:hidden" />With no hourly fee or retainer, we help you worry less and live more. What are you waiting for?
@@ -61,40 +54,40 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="max-w-[1460px] mx-auto px-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-20">
-        <h2 className="text-3xl font-semibold leading-none grid-cols-[1 / -1] mx-auto mb-10">New Services</h2>
+      <section className="max-w-fit mx-auto px-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-20">
+        <h2 className="text-3xl font-semibold leading-none grid-cols-[1 / -1] mx-auto mb-5">New Services To Review</h2>
         {services?.map(service => <ServiceCard key={service?._id} service={service} />)}
         <div className="grid-cols-[1 / -1] mx-auto mt-10">
-          <Link rel="noopener noreferrer" to="/services" className="px-8 py-3 text-lg font-semibold rounded bg-blue-600 text-gray-50">All Services</Link>
+          <Link to="/services" className="self-center lg:self-start px-8 py-3 text-lg font-semibold rounded bg-blue-600 text-gray-50">View All</Link>
         </div>
       </section>
 
       <section className="bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100">
-        <div className=" max-w-[1460px] mx-auto px-2 container flex flex-col lg:flex-row items-center">
+        <div className=" max-w-[1460px] mx-auto px-3 container flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/3">
             <img src="/how-we-help.jpg" className="mx-auto py-16 rounded-lg" alt="" />
           </div>
-          <div className="text-center lg:text-left flex flex-col w-full p-6 lg:w-2/3 md:p-8 lg:p-12">
+          <div className="text-center lg:text-left flex flex-col w-full px-6 my-8 lg:w-2/3 md:p-8 lg:p-12">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 mb-8 text-blue-600 mx-auto lg:ml-0">
               <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
             </svg>
             <h2 className="text-3xl font-semibold leading-none">How Legaltix Can Help</h2>
-            <p className="mt-4 mb-8 text-xl">Here are individual person who have experience in nearly every area of law. You can consult with your require Legaltix expert on many common legal topics and they will work diligently to find a resolution. Dive deeper into some of the most common practice areas.</p>
+            <p className="mt-4 mb-8 text-lg">Here are individual person who have experience in nearly every area of law. You can consult with your require Legaltix expert on many common legal topics and they will work diligently to find a resolution. Dive deeper into some of the most common practice areas.</p>
             <Link to="/services" className="self-center lg:self-start px-8 py-3 text-lg font-semibold rounded bg-blue-600 text-gray-50">Get started</Link>
           </div>
         </div>
       </section>
 
       <section className="bg-white text-black">
-        <div className="container px-6 py-12 mx-auto">
+        <div className="container px-3 py-12 mx-auto">
           <div className="grid items-center gap-4 xl:grid-cols-5">
             <div className="max-w-2xl mx-auto my-8 space-y-4 text-center xl:col-span-2 xl:text-left">
-              <h2 className="text-4xl font-bold" style={{lineHeight: "1.3em"}}>What our customers are saying about our legal services</h2>
-              <p className="text-gray-600">We've been trusted by 1000 business owners worldwide since 2022. See what your fellow entrepreneurs are saying about Legaltix.</p>
+              <h2 className="text-4xl font-bold" style={{lineHeight: "1.3em"}}>What Our Customers Are Saying About Our Legal Services</h2>
+              <p className="text-gray-600 text-lg">We've been trusted by 1000 business owners worldwide since 2022. See what your fellow entrepreneurs are saying about Legaltix.</p>
             </div>
-            <div className="p-6 xl:col-span-3">
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="grid content-center gap-4">
+            <div className="py-6 xl:col-span-3">
+              <div className="grid gap-10 md:grid-cols-2">
+                <div className="grid content-center gap-10">
                   <div className="p-6 rounded-lg shadow-md text-gray-900 dark:bg-gray-900 dark:text-white">
                     <p>"You guys are doing great and making the process simple. Opti-tru is moving to Wix, and if you can offer me a deal, ill leave the best reviews and sponsor my company by Legaltix... I mean, we have the same colors. Thank you."</p>
                     <div className="flex items-center mt-4 space-x-4">

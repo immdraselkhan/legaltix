@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/UserContext'
 import { toast } from 'react-toastify'
 import useTitle from '../hooks/useTitle'
@@ -89,21 +89,41 @@ const AddService = () => {
     });
   };
 
+  const btn = "self-center lg:self-start px-8 py-3 text-lg font-semibold rounded bg-blue-600 text-gray-50 mx-auto"
+
+  const inputClasses = "w-full text-xl px-3 py-3 border rounded-md";
+  const labelsClass = "block mb-2 text-sm text-slate-400";
+
   return (
-    <form onSubmit={handleAddService}>
-      <input type="text" name="title" placeholder="Enter service title" required />
-      <br />
-      <label htmlFor="thumbnail" className="block text-sm font-medium">Thumbnail</label>
-      <input onChange={(e) => convet2base64(e)} type="file" name="thumbnail" required />
-      <br />
-      {!user?.photoURL && <input onChange={(e) => convet2base64(e)} type="file" name="user-photo" required />}
-      <br />
-      <input type="number" name="price" placeholder="Enter service price" required />
-      <br />
-      <textarea name="description" cols="30" rows="10" placeholder="Enter service description" required />
-      <br />
-      <input type="submit" value="Submit" />
-    </form> 
+
+    <section className="bg-gray-100 text-gray-800 dark:bg-gray-600 dark:text-white">
+      <nav aria-label="breadcrumb" className="w-full px-3 py-10 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white">
+        <ol className="flex h-8 space-x-2 w-fit mx-auto">
+          <li className="flex items-center">
+            <Link to="/" title="Back to homepage" className="flex items-center hover:underline">Home</Link>
+          </li>
+          <li className="flex items-center space-x-1">
+            <span>/</span>
+            <p className="flex items-center px-1 capitalize hover:no-underline cursor-default">Add Service</p>
+          </li>
+        </ol>
+      </nav>
+
+      <form className="max-w-2xl mx-auto flex flex-col gap-5 py-20" onSubmit={handleAddService}>
+        <input className={inputClasses} type="text" name="title" placeholder="Enter service title" required />
+
+        <label className={labelsClass} htmlFor="thumbnail">Thumbnail</label>
+        <input className={inputClasses} onChange={(e) => convet2base64(e)} type="file" name="thumbnail" required />
+
+        {!user?.photoURL && <input onChange={(e) => convet2base64(e)} type="file" name="user-photo" required />}
+
+        <input className={inputClasses} type="number" name="price" placeholder="Enter service price" required />
+
+        <textarea className={inputClasses} name="description" cols="30" rows="10" placeholder="Enter service description" required />
+
+        <input className={btn} type="submit" value="Submit" />
+      </form> 
+    </section>
   )
 };
 

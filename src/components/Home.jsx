@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import 'react-photo-view/dist/react-photo-view.css'
 import { toast } from 'react-toastify'
 import ServiceCard from './ServiceCard'
@@ -63,7 +63,7 @@ const Home = () => {
       </section>
 
       <section className="bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100">
-        <div className=" max-w-[1460px] mx-auto px-3 container flex flex-col lg:flex-row items-center">
+        <div className="max-w-[1460px] mx-auto px-3 container flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/3">
             <img src="/how-we-help.jpg" className="mx-auto py-16 rounded-lg" alt="" />
           </div>

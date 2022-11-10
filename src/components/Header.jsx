@@ -33,16 +33,16 @@ const Header = () => {
       <Navbar
         fluid={true}
       >
-        <Navbar.Brand href="/">
+        <Link to="/" className="flex">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="/icon.svg"
             className="mr-3 h-6 sm:h-9"
             alt="Legaltix Logo"
           />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             Legaltix
           </span>
-        </Navbar.Brand>
+        </Link>
         <div className="flex md:order-2 gap-10">
           <Flowbite>
             <DarkThemeToggle />
@@ -61,16 +61,6 @@ const Header = () => {
                   {user?.email}
                 </span>
               </Dropdown.Header>
-              <Dropdown.Item>
-                Dashboard
-              </Dropdown.Item>
-              <Dropdown.Item>
-                Settings
-              </Dropdown.Item>
-              <Dropdown.Item>
-                Earnings
-              </Dropdown.Item>
-              <Dropdown.Divider />
               <Dropdown.Item onClick={() => logOut()}>
                 Sign out
               </Dropdown.Item>
@@ -78,31 +68,21 @@ const Header = () => {
             <Dropdown.Item><Link to="/login" state={{from: location}} replace>Login</Link></Dropdown.Item>}
           <Navbar.Toggle />
         </div>
-        <Navbar.Collapse>
+        <Navbar.Collapse className="dark:text-white">
           <Link to="/">
-            <Navbar.Link
-              active={true}
-            >
-              Home
-            </Navbar.Link>
+            Home
           </Link>
           {user?.uid && (
           <>
             <Link to="/my-reviews">
-              <Navbar.Link>
-                My Reviews
-              </Navbar.Link>
+              My Reviews
             </Link>
             <Link to="/add-service">
-              <Navbar.Link>
-                Add Service
-              </Navbar.Link>
+              Add Service
             </Link>
           </>)}
           <Link to="/blog">
-              <Navbar.Link>
-                Blog
-              </Navbar.Link>
+              Blog
           </Link>
         </Navbar.Collapse>
       </Navbar>

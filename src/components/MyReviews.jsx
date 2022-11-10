@@ -6,6 +6,7 @@ import { FaStar } from 'react-icons/fa'
 import {HiOutlineExclamationCircle} from 'react-icons/hi'
 import { toast } from 'react-toastify'
 import useTitle from '../hooks/useTitle'
+import { Link } from 'react-router-dom'
 
 const MyReviews = () => {
 
@@ -149,23 +150,58 @@ const MyReviews = () => {
     });
   }, [refresh]);
 
+  const btn = "rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  const btnWarning = "rounded-lg bg-red-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+
   return (
-    <div>
-      {reviews.length ? (
-          reviews?.map(review => {
-          return (
-            <div key={review?._id}>
-              <h5>{review?.name}</h5>
-              <p>{review?.comment}</p>
-              <Rating readonly placeholderRating={review?.star} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />}/>
-              <img src={review?.userPhoto} alt="" />
-              <div>
-                <button data-id={review?.serviceId} data-star={review?.star} data-comment={review?.comment} onClick={(e) => {handleModal('edit'), setServiceId(e.target.getAttribute('data-id')), setOldStar(e.target.getAttribute('data-star')), setOldComment(e.target.getAttribute('data-comment'))}}>Edit</button>
-                <button data-id={review?.serviceId} data-star={review?.star} onClick={(e) => {handleModal('trash'), setServiceId(e.target.getAttribute('data-id'), setOldStar(e.target.getAttribute('data-star')))}}>Delete</button>
+    <>
+      <nav aria-label="breadcrumb" className="w-full px-3 py-10 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white">
+        <ol className="flex h-8 space-x-2 w-fit mx-auto">
+          <li className="flex items-center">
+            <Link to="/" title="Back to homepage" className="flex items-center hover:underline">Home</Link>
+          </li>
+          <li className="flex items-center space-x-1">
+            <span>/</span>
+            <p className="flex items-center px-1 capitalize hover:no-underline cursor-default">My Reviews</p>
+          </li>
+        </ol>
+      </nav>
+
+      <section>
+        <div className="max-w-[1460px] mx-auto px-3 my-10 grid grid-cols-3 gap-10">
+          {reviews.length ? (
+            reviews?.map(review => {
+            return (
+              <div key={review?._id} className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
+                <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
+                  <div className="flex justify-between p-4">
+                    <div className="flex space-x-4">
+                      <div>
+                        <img src={review?.userPhoto} alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold">{review?.name}</h4>
+                        <span className="text-xs dark:text-gray-400">{review?.date}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2 dark:text-yellow-500">
+                      <Rating readonly placeholderRating={review?.star} emptySymbol= {<FaStar className="text-black dark:text-white" />} placeholderSymbol= {<FaStar className="text-primary" />}/>
+                      <span className="text-xl font-bold mb-0.5">{review?.star}</span>
+                    </div>
+                  </div>
+                  <div className="p-4 space-y-2 text-sm dark:text-gray-400">
+                    <p className="text-lg">{review?.comment}</p>
+                    <div className="flex justify-between">
+                      <button className={btn} data-id={review?.serviceId} data-star={review?.star} data-comment={review?.comment} onClick={(e) => {handleModal('edit'), setServiceId(e.target.getAttribute('data-id')), setOldStar(e.target.getAttribute('data-star')), setOldComment(e.target.getAttribute('data-comment'))}}>Edit</button>
+                      <button className={btnWarning} data-id={review?.serviceId} data-star={review?.star} onClick={(e) => {handleModal('trash'), setServiceId(e.target.getAttribute('data-id'), setOldStar(e.target.getAttribute('data-star')))}}>Delete</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          )})
-        ) : 'No review yet'}
+            )})
+          ) : <img className="h-24 mx-auto mt-10" src="/no-review-found.png" alt="" />}
+        </div>
+
         <Modal show={show.modal} size="md" popup={true} onClose={() => setShow({modal: false, edit: false, trash: false})}>
           <Modal.Header />
           <Modal.Body>
@@ -178,7 +214,7 @@ const MyReviews = () => {
                   <br />
                   <Rating onClick={(value) => setStar(value)} initialRating={star} emptySymbol={<FaStar className="text-black dark:text-white" />} fullSymbol={<FaStar className="text-primary" />} />
                   <br />
-                  <input type="submit" value="Submit" />
+                  <input className={btn} type="submit" value="Submit" />
                 </form>
               </div>
             )}
@@ -195,7 +231,8 @@ const MyReviews = () => {
             )}
           </Modal.Body>
         </Modal>
-    </div>
+      </section>
+    </>
   )
 };
 

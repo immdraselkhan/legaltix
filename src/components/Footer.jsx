@@ -6,6 +6,10 @@ const Footer = () => {
     <footer className="bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50">
       <div className="container flex flex-col p-3 py-8 mx-auto lg:flex-row divide-gray-600">
         <ul className="self-center py-6 space-y-4 text-center sm:flex sm:space-y-0 sm:justify-around sm:space-x-4 lg:flex-1 lg:justify-start">
+          <Link to="/" className="hover:text-black dark:hover:text-slate-200">
+            <span>© {new Date().getFullYear()} All rights reserved</span>
+          </Link>
+          <li className="hidden sm:block">|</li>
           <li><Link to="/">About</Link></li>
           <li><Link to="/">Contact Us</Link></li>
           <li><Link to="/blog">Blog</Link></li>

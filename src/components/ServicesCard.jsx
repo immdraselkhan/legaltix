@@ -6,7 +6,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view'
 import 'react-photo-view/dist/react-photo-view.css'
 import { Link } from 'react-router-dom'
 
-const ServiceCard = ({service}) => {
+const ServicesCard = ({service}) => {
   return (
     <div className="max-w-sm mx-auto">
       <Card>
@@ -60,6 +60,6 @@ const ServiceCard = ({service}) => {
       </Card>
     </div>
   )
-};
+}
 
-export default ServiceCard;
+export default ServicesCard;

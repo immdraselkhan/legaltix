@@ -69,19 +69,19 @@ const Header = () => {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse className="dark:text-white">
-          <Link to="/">
+          <Link className="mt-5 md:mt-0" to="/">
             Home
           </Link>
           {user?.uid && (
           <>
-            <Link to="/my-reviews">
+            <Link className="mt-5 md:mt-0" to="/my-reviews">
               My Reviews
             </Link>
-            <Link to="/add-service">
+            <Link className="mt-5 md:mt-0" to="/add-service">
               Add Service
             </Link>
           </>)}
-          <Link to="/blog">
+          <Link className="mt-5 md:mt-0" to="/blog">
               Blog
           </Link>
         </Navbar.Collapse>

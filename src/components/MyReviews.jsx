@@ -50,7 +50,7 @@ const MyReviews = () => {
     // Creating an object using the form data
     const modifiedReview = {comment: e.target.comment.value, oldStar, star};
     // Fetch method: PATCH
-    fetch(`http://127.0.0.1:8000/my-reviews/edit/${serviceId}`, {
+    fetch(`https://legaltix-api.vercel.app/my-reviews/edit/${serviceId}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json'
@@ -88,7 +88,7 @@ const MyReviews = () => {
   // Handle trash
   const handleTrash = () => {
     // Fetch method: DELETE
-    fetch(`http://127.0.0.1:8000/my-reviews/delete/${serviceId}`, {
+    fetch(`https://legaltix-api.vercel.app/my-reviews/delete/${serviceId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -150,9 +150,6 @@ const MyReviews = () => {
     });
   }, [refresh]);
 
-  const btn = "rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-  const btnWarning = "rounded-lg bg-red-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-
   return (
     <>
       <nav aria-label="breadcrumb" className="w-full px-3 py-10 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white">
@@ -167,20 +164,20 @@ const MyReviews = () => {
         </ol>
       </nav>
 
-      <section>
-        <div className="max-w-[1460px] mx-auto px-3 my-10 grid grid-cols-3 gap-10">
+      <section className="dark:bg-gray-600">
+        <div className="max-w-[1460px] mx-auto px-3 py-10 space-y-5">
           {reviews.length ? (
             reviews?.map(review => {
             return (
               <div key={review?._id} className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-                <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
-                  <div className="flex justify-between p-4">
+                <div className="container flex flex-col w-full shadow-lg max-w-lg p-6 mx-auto divide-y rounded-lg divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
+                  <div className="flex flex-wrap gap-5 justify-between p-4">
                     <div className="flex space-x-4">
                       <div>
                         <img src={review?.userPhoto} alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
                       </div>
                       <div>
-                        <h4 className="font-bold">{review?.name}</h4>
+                        <h4 className="font-bold">{review?.name} ✅</h4>
                         <span className="text-xs dark:text-gray-400">{review?.date}</span>
                       </div>
                     </div>
@@ -191,18 +188,18 @@ const MyReviews = () => {
                   </div>
                   <div className="p-4 space-y-2 text-sm dark:text-gray-400">
                     <div>
-                      <h3 className="text-xl font-bold">{review?.serviceTitle}</h3>
+                      <Link to={`/service/${review?.slug}`} className="text-xl font-bold">{review?.serviceTitle}</Link>
                     </div>
                     <p className="text-lg">{review?.comment}</p>
                     <div className="flex justify-between pt-5">
-                      <button className={btn} data-id={review?.serviceId} data-star={review?.star} data-comment={review?.comment} onClick={(e) => {handleModal('edit'), setServiceId(e.target.getAttribute('data-id')), setOldStar(e.target.getAttribute('data-star')), setOldComment(e.target.getAttribute('data-comment'))}}>Edit</button>
-                      <button className={btnWarning} data-id={review?.serviceId} data-star={review?.star} onClick={(e) => {handleModal('trash'), setServiceId(e.target.getAttribute('data-id'), setOldStar(e.target.getAttribute('data-star')))}}>Delete</button>
+                      <button className="btn-sm" data-id={review?.serviceId} data-star={review?.star} data-comment={review?.comment} onClick={(e) => {handleModal('edit'), setServiceId(e.target.getAttribute('data-id')), setStar(e.target.getAttribute('data-star')), setOldStar(e.target.getAttribute('data-star')), setOldComment(e.target.getAttribute('data-comment'))}}>Edit</button>
+                      <button className="btn-sm-warning" data-id={review?.serviceId} data-star={review?.star} onClick={(e) => {handleModal('trash'), setServiceId(e.target.getAttribute('data-id'), setOldStar(e.target.getAttribute('data-star')))}}>Delete</button>
                     </div>
                   </div>
                 </div>
               </div>
             )})
-          ) : <img className="h-24 mx-auto mt-10" src="/no-review-found.png" alt="" />}
+          ) : <div className="min-h-[calc(100vh_-_388px)] flex items-center grid-child-auto mx-auto w-fit"><img className="h-24" src="/no-review-found.png" alt="" /></div> }
         </div>
 
         <Modal show={show.modal} size="md" popup={true} onClose={() => setShow({modal: false, edit: false, trash: false})}>
@@ -212,12 +209,12 @@ const MyReviews = () => {
               <div className="text-center">
                 <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
                 <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Modify the review</h3>
-                <form onSubmit={handleEdit}>
-                  <textarea name="comment" cols="30" rows="10" placeholder="Enter review details" defaultValue={oldComment} required />
+                <form className="space-y-3" onSubmit={handleEdit}>
+                  <textarea className="input-filed" name="comment" cols="30" rows="10" placeholder="Enter review details" defaultValue={oldComment} required />
                   <br />
-                  <Rating onClick={(value) => setStar(value)} initialRating={star} emptySymbol={<FaStar className="text-black dark:text-white" />} fullSymbol={<FaStar className="text-primary" />} />
+                  <Rating className="text-xl space-x-1" onClick={(value) => setStar(value)} initialRating={star} emptySymbol={<FaStar className="text-black dark:text-white" />} fullSymbol={<FaStar className="text-primary" />} />
                   <br />
-                  <input className={btn} type="submit" value="Submit" />
+                  <input className="btn-md" type="submit" value="Submit" />
                 </form>
               </div>
             )}

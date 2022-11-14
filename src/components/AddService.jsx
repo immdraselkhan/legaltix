@@ -12,6 +12,8 @@ const AddService = () => {
   // Getting data from AuthContext
   const {user, updateUserProfile} = useContext(AuthContext);
 
+  console.log(user);
+
   // useNavigate hook
   const navigate = useNavigate();
 
@@ -41,7 +43,6 @@ const AddService = () => {
     // Disabling form default behavior
     e.preventDefault();
     // Create object using form data to post server
-    // const time = Date.now()
     const service = {
       title: e.target.title.value,
       slug: e.target.title.value.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'') + '-' + Math.floor(Math.random() * 100000),
@@ -66,6 +67,7 @@ const AddService = () => {
       if (data.success) {
         // Update user details
         updateUserProfile({photoURL: data.updatedPhoto})
+        console.log(data.updatedPhoto);
         // Form reset
         e.target.reset();
         // Successful toast
@@ -89,14 +91,8 @@ const AddService = () => {
     });
   };
 
-  const btn = "self-center lg:self-start px-8 py-3 text-lg font-semibold rounded bg-blue-600 text-gray-50 mx-auto"
-
-  const inputClasses = "w-full text-xl px-3 py-3 border rounded-md";
-  const labelsClass = "block mb-2 text-sm text-slate-400";
-
   return (
-
-    <section className="bg-gray-100 text-gray-800 dark:bg-gray-600 dark:text-white">
+    <>
       <nav aria-label="breadcrumb" className="w-full px-3 py-10 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white">
         <ol className="flex h-8 space-x-2 w-fit mx-auto">
           <li className="flex items-center">
@@ -109,21 +105,25 @@ const AddService = () => {
         </ol>
       </nav>
 
-      <form className="max-w-2xl mx-auto flex flex-col gap-5 py-20" onSubmit={handleAddService}>
-        <input className={inputClasses} type="text" name="title" placeholder="Enter service title" required />
+      <section className="dark:bg-gray-900 px-3">
+        <form className="max-w-2xl mx-auto flex flex-col gap-5 py-20" onSubmit={handleAddService}>
+          <input className="input-filed" type="text" name="title" placeholder="Enter service title" required />
 
-        <label className={labelsClass} htmlFor="thumbnail">Thumbnail</label>
-        <input className={inputClasses} onChange={(e) => convet2base64(e)} type="file" name="thumbnail" required />
+          <label className="input-level" htmlFor="thumbnail">Thumbnail</label>
+          <input className="input-filed" onChange={(e) => convet2base64(e)} type="file" name="thumbnail" required />
 
-        {!user?.photoURL && <input onChange={(e) => convet2base64(e)} type="file" name="user-photo" required />}
+          {!user?.photoURL && <>
+          <label className="input-level" htmlFor="thumbnail">Photo</label>
+          <input className="input-filed" onChange={(e) => convet2base64(e)} type="file" name="user-photo" required /></>}
 
-        <input className={inputClasses} type="number" name="price" placeholder="Enter service price" required />
+          <input className="input-filed" type="number" name="price" placeholder="Enter service price" required />
 
-        <textarea className={inputClasses} name="description" cols="30" rows="10" placeholder="Enter service description" required />
+          <textarea className="input-filed" name="description" cols="30" rows="10" placeholder="Enter service description" required />
 
-        <input className={btn} type="submit" value="Submit" />
-      </form> 
-    </section>
+          <input className="btn-lg" type="submit" value="Submit" />
+        </form> 
+      </section>
+    </>
   )
 };
 

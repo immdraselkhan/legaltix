@@ -7,6 +7,7 @@ import 'react-photo-view/dist/react-photo-view.css'
 import { Link } from 'react-router-dom'
 
 const ServiceCard = ({service}) => {
+
   return (
     <div className="max-w-sm mx-auto">
       <Card>
@@ -50,12 +51,7 @@ const ServiceCard = ({service}) => {
             {service?.reviewCount || 0}
             </span>
           </div>
-          <Link
-             to={`/service/${service?.slug}`}
-            className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            View Details
-          </Link>
+          <Link to={`/service/${service?.slug}`}className="btn-sm">View Details</Link>
         </div>
       </Card>
     </div>

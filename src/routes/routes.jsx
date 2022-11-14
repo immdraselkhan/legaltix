@@ -5,7 +5,7 @@ import Home from '../components/Home'
 import Login from '../components/Login'
 import Register from '../components/Register'
 import Services from '../components/Services'
-import Service from '../components/Service'
+import ServiceDetails from '../components/ServiceDetails'
 import Blog from '../components/Blog'
 import PrivateRoute from './PrivateRoute'
 import AddService from '../components/AddService'
@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/service/:slug',
-        element: <Service />
+        element: <ServiceDetails />
       },
       {
         path: '/blog',

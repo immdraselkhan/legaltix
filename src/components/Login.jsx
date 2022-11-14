@@ -16,7 +16,7 @@ const Login = () => {
   // useNavigate hook
   const navigate = useNavigate();
 
-  // useLocation hook
+  // Get current location
   const location = useLocation();
 
   // Previous location

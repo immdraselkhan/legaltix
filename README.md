@@ -5,6 +5,12 @@ This is simple individual legal service review website. I used ReactJS for front
 ## Live Website - [legaltix.web.app](https://legaltix.web.app)
 Hosted on Google firebase
 
+## API Server - [legaltix-api.vercel.app](https://legaltix-api.vercel.app)
+Hosted on Vercel
+
+## API Server Code - [https://github.com/immdraselkhan/legaltix-api](https://github.com/immdraselkhan/legaltix-api)
+Hosted on Github
+
 ## Other Resources
 I used the following things in this project.
 

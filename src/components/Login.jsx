@@ -105,9 +105,7 @@ const Login = () => {
       // Call JWT function
       setJWT(user?.uid);
       // Reditect to the targeted page
-      setTimeout(() => {
-        navigate(from, {replace: true});
-      }, 1000);
+      navigate(from, {replace: true});
       // Loader state false
       setLoading(false);
     }).catch((error) => {

@@ -8,7 +8,7 @@ Hosted on Google firebase
 ## API Server - [legaltix-api.vercel.app](https://legaltix-api.vercel.app)
 Hosted on Vercel
 
-## API Server Code - [https://github.com/immdraselkhan/legaltix-api](https://github.com/immdraselkhan/legaltix-api)
+## API Server Code - [Github](https://github.com/immdraselkhan/legaltix-api)
 Hosted on Github
 
 ## Other Resources
